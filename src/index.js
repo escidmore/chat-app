@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
         if (match) {
             let roll = roller.roll(`${match[2]}d10!=10>=8`).toJSON();
             let result = (`${user.username} rolled ${match[2]} dice for ${roll.total} successes.  ${roll.rolls.sort()}`);
-            io.to(user.room).emit('serverMessage', generateMessage(user.username, result))
+            io.to(user.room).emit('serverMessage', generateMessage('System', result))
             callback()
 
         } else {
